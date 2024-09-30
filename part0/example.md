@@ -5,7 +5,7 @@ graph TD;
     B-->D;
     C-->D;
 ```
-```
+```mermaid
 sequenceDiagram
     participant browser
     participant server
