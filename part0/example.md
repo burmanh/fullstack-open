@@ -5,6 +5,7 @@ graph TD;
     B-->D;
     C-->D;
 ```
+```
 sequenceDiagram
     participant browser
     participant server
@@ -32,6 +33,6 @@ sequenceDiagram
     deactivate server
 
     Note right of browser: The browser executes the callback function that renders the notes
-
+```
 
 -- .. -- .. --
