@@ -23,10 +23,12 @@ const App = () => {
 
   // Define the Content component
   const Content = ({ parts }) => {
+    /**skicka parts[] till Part */
+    /** Part part=parts[0] */
     return (
       <>
-        <Part name={parts[0].name} exercises={parts[0].exercises} />
-        <Part name={parts[1].name} exercises={parts[1].exercises} />
+        <Part name={parts[0].name} exercises={parts[0].exercises} /> 
+        <Part name={parts[1].name} exercises={parts[1].exercises} /> 
         <Part name={parts[2].name} exercises={parts[2].exercises} />
       </>
     )
@@ -41,6 +43,9 @@ const App = () => {
   const Part = ({ name, exercises}) => {
     return (<p>{name} {exercises}</p>)
   };
+  /** const Part = (part) => {
+    return (<p>{part.name} {part.exercises}</p>)
+  };*/
 
   return (
     <div>
