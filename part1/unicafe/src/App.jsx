@@ -3,7 +3,7 @@ import { useState } from 'react'
 //TO DO 
 
 const Button = (props) => (
-  <button onClick={props.handleClick}>
+  <button onClick={props.onClick}>
     {props.text}
   </button>
 )
@@ -22,17 +22,20 @@ const App = () => {
   return (
     <>
       <h1>Unicafé</h1>
-      
+
       <h2>Give Feedback</h2>
-      <button onClick={increaseGood}>
-        good
-      </button>
-      <button onClick={increaseNeutral}>
-        neutral
-      </button>
-      <button onClick={increaseBad}>
-        bad
-      </button>
+      <Button
+        onClick={increaseGood}
+        text='good'
+      />
+      <Button
+        onClick={increaseNeutral}
+        text='neutral'
+      />
+      <Button
+        onClick={increaseBad}
+        text='bad'
+      />
 
       <h2>Statistics</h2>
       <p>good = {good}</p>
