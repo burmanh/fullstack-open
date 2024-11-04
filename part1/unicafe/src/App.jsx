@@ -1,6 +1,5 @@
 import { useState } from 'react'
 
-//TO DO 
 
 const Button = (props) => (
   <button onClick={props.onClick}>
@@ -18,6 +17,7 @@ const App = () => {
   const increaseGood = () => setGood(good + 1)
   const increaseNeutral = () => setNeutral(neutral + 1)
   const increaseBad = () => setBad(bad + 1)
+  const total = good+neutral+bad;
 
   return (
     <>
@@ -41,6 +41,9 @@ const App = () => {
       <p>good = {good}</p>
       <p>neutral = {neutral}</p>
       <p>bad = {bad}</p>
+      <p>all {total}</p>
+      <p>average {(good-bad)/total}</p>
+      <p>positive {Math.round(good/total*100*(100))/100} % </p>
     </>
   )
 }
