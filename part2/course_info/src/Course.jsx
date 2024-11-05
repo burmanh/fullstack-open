@@ -10,9 +10,9 @@ const Part = ({ parts }) => {
     </div>
   );
 };
-//TODO add with reduce
+//Add sauce with reduce
 const Sum = ({ summingParts }) => {
-  const totalExercises = summingParts.reduce((sum, part) => sum + part.exercises, 0);
+  const totalExercises = summingParts.reduce((sum, part) => sum + part.exercises,0);
 
   return (
     <div>
@@ -25,8 +25,6 @@ const Sum = ({ summingParts }) => {
 const Header = ({ courseName }) => <h1>{ courseName }</h1>
 
 const Course = ({ course }) => {
-  //const course = 'Half Stack application development'
-  //console.log(course)
   return (
     <>
       <Header courseName = { course.name } />
