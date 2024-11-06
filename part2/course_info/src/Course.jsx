@@ -10,9 +10,9 @@ const Part = ({ parts }) => {
     </div>
   );
 };
-//Add sauce with reduce
+
 const Sum = ({ summingParts }) => {
-  const totalExercises = summingParts.reduce((sum, part) => sum + part.exercises,0);
+  const totalExercises = summingParts.reduce((sum, part) => sum + part.exercises, 0);
 
   return (
     <div>
@@ -21,17 +21,30 @@ const Sum = ({ summingParts }) => {
   );
 };
 
-
-const Header = ({ courseName }) => <h1>{ courseName }</h1>
-
-const Course = ({ course }) => {
+const Display = ({ course }) => {
   return (
     <>
-      <Header courseName = { course.name } />
-      <Part parts = { course.parts } />
-      <Sum summingParts = { course.parts } />
-     
+      <Header courseName={course.name} />
+      <Part parts={course.parts} />
+      <Sum summingParts={course.parts} />
+
     </>
+  );
+};
+
+const Header = ({ courseName }) => <h1>{courseName}</h1>
+
+const Course = ( {courses}) => {
+  return (
+    //extract course object with map on initial array courses from App.js
+    <div>
+      <h1>Curriculum</h1>
+      {courses.map((name, index) => (
+        // Render ChildComponent for each name in the array   
+          <Display course={courses[index]} />
+      ))}
+    </div>
+
   )
 }
 export default Course
