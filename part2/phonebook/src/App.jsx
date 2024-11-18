@@ -9,70 +9,75 @@ const ListPersons = ({ person }) => {
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas',
+    {
+      name: 'Henrik Burman',
       id: 1
     },
-    //{ name: 'henrik burman' }
   ])
-  //console.log(persons)
   const [newName, setNewName] = useState('')
 
-
-  /** Addera personobjekt till persons-array */  
-  
+  /** Addera personobjekt till persons-array */
   const addPerson = (event) => {
-    event.preventDefault()
-    const personObject = {
-      name: newName,
-      id: String(persons.length + 1),
-    }
-    
-    /** TODOif else COMPARE - setpers och newname */
-    {
-      persons.map(person => {
-        if (personObject.name.toLowerCase() == person.name.toLowerCase())
-          alert(`${newName} is already added to phonebook`)
-        else {
-          /** TODO CompareInsertion calls setPerson? */
-          setPersons(persons.concat(personObject))
-          setNewName('')
-        }
-      }
-      )
-    }
-  }
+    event.preventDefault();
 
-  //(TODO Kolla in det här och varför det behövs)
-  const handleNoteChange = (event) => {
+    if (newName) { // Check if input is NOT empty
+      // Check if the name already exists in the array GPT
+      const nameExists = persons.some(person =>
+        person.name.toLowerCase() === newName.toLowerCase()
+      );
+    /**
+    let nameExists = false; //nameflag
+    for (let i = 0; i < persons.length; i++) {
+      if (persons[i].name.toLowerCase() === newName.toLowerCase()) {
+        nameExists = true;
+        break; // break on match, including lowercase
+      }
+    }
+    */
+      //"isolate state updates from the rest of addPerson" if name already exists
+      if (nameExists) {
+        alert(`${newName} is already added to phonebook`);
+      } else {
+        const personObject = {
+          name: newName,
+          id: persons.length + 1,
+        };
+
+        // Add new name to the phonebook
+        setPersons(persons.concat(personObject));
+        setNewName('');
+      }
+    }
+  };
+
+  const handlePersonChange = (event) => {
+    //console.log('printing from handlePersonChange ' + event.target.value)
     setNewName(event.target.value)
   }
 
   return (
-    
+
     <>
       <h2>Phonebook</h2>
-      
-      <form onSubmit={addPerson}>
-    
-        <div>
-          name: <input value={newName} onChange={handleNoteChange}/>
-        </div>
 
+      <form onSubmit={addPerson}>
+        <div>
+          name: <input value={newName} onChange={handlePersonChange} />
+        </div>
         <div>
           <button type="submit">add</button>
-        
         </div>
-        
+
       </form>
-      
-     
+
+
 
       <h2>Numbers</h2>
-     {persons.map(person => 
-          <ListPersons key={person.name} person={person} />
-        )}
+      {persons.map(person =>
+        <ListPersons key={person.id} person={person} />
+      )}
 
-     <div>debug: {newName}</div>
+      <div>debug: {newName}</div>
     </>
   )
 }
