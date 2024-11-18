@@ -6,6 +6,7 @@ const ListPersons = ({ person }) => {
   )
 }
 
+
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas',
@@ -17,7 +18,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
 
 
-  /** TODO Addera personobjekt till persons-array */  
+  /** Addera personobjekt till persons-array */  
   
   const addPerson = (event) => {
     event.preventDefault()
@@ -25,10 +26,23 @@ const App = () => {
       name: newName,
       id: String(persons.length + 1),
     }
-    setPersons(persons.concat(personObject))
-    setNewName('')
+    
+    /** TODOif else COMPARE - setpers och newname */
+    {
+      persons.map(person => {
+        if (personObject.name.toLowerCase() == person.name.toLowerCase())
+          alert(`${newName} is already added to phonebook`)
+        else {
+          /** TODO CompareInsertion calls setPerson? */
+          setPersons(persons.concat(personObject))
+          setNewName('')
+        }
+      }
+      )
+    }
   }
-  //TODO Kolla in det hä'r och varför det behövs
+
+  //(TODO Kolla in det här och varför det behövs)
   const handleNoteChange = (event) => {
     setNewName(event.target.value)
   }
