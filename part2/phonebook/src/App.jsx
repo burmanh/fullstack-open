@@ -1,11 +1,13 @@
 import { useState } from 'react'
-
+import Persons from './Persons'
+import PersonForm from './PersonForm'
+/* OLD
 const ListPersons = ({ person }) => {
   return (
     <p>{person.name} {person.number}</p>
   )
 }
-
+*/
 const App = () => {
   const [persons, setPersons] = useState([
     { name: 'Arto Hellas', number: '040-123456', id: 1 },
@@ -16,7 +18,7 @@ const App = () => {
   const [newName, setNewName] = useState('')
   const [newNumber, setNewNumber] = useState('')
 
-  /** Addera personobjekt till persons-array */
+  /** Addera personobjekt till persons-array OLD *//**
   const addPerson = (event) => {
     event.preventDefault();
 
@@ -25,15 +27,6 @@ const App = () => {
       const nameExists = persons.some(person =>
         person.name.toLowerCase() === newName.toLowerCase()
       );
-      /**
-      let nameExists = false; //nameflag
-      for (let i = 0; i < persons.length; i++) {
-        if (persons[i].name.toLowerCase() === newName.toLowerCase()) {
-          nameExists = true;
-          break; // break on match, including lowercase
-        }
-      }
-      */
       //"isolate state updates from the rest of addPerson" if name already exists
       if (nameExists) {
         alert(`${newName} is already added to phonebook`);
@@ -51,7 +44,7 @@ const App = () => {
       }
     }
   };
-
+  *//* OLD
   const handlePersonChange = (event) => {
     //console.log('printing from handlePersonChange ' + event.target.value)
     setNewName(event.target.value)
@@ -60,14 +53,15 @@ const App = () => {
     //console.log('printing from handleNumberChange ' + event.target.value)
     setNewNumber(event.target.value)
   }
-
+  */
   return (
 
     <>
-      <h2>Phonebook</h2>
-
+      <h1>Phonebook</h1>
+      <p>here goes searchfield</p>
+      <h2>Add to phonebook</h2>
+      {/*OLD
       <form onSubmit={addPerson}>
-        {/** each <input> element has a single value */}
         <div>
           name: <input value={newName} onChange={handlePersonChange} />
         </div>
@@ -78,15 +72,27 @@ const App = () => {
           <button type="submit">add</button>
         </div>
       </form>
-
-
-
+      */}
+      <PersonForm
+        newName={newName}
+        setNewName={setNewName}
+        newNumber={newNumber}
+        setNewNumber={setNewNumber}
+        setPersons={setPersons}
+      />
       <h2>Numbers</h2>
-      {persons.map(person =>
+      {/*OLD*/}
+      {/* persons.map(person =>
         <ListPersons key={person.id} person={person} />
-      )}
+      )*/}
+      {/*OLD*/}
+      {/*persons.map(person =>
+        <SinglePerson key={person.id} person={person} />
+      )*/}
+      <Persons persons={persons} />
 
-      <div>debug: {newName}</div>
+
+      <div>debug: {/*newName*/}</div>
     </>
   )
 }
