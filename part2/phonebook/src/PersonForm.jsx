@@ -1,13 +1,16 @@
 /** hur ska state skickas setnewname osv?? DONE */
 const PersonForm = ({ newName,  setNewName, newNumber, setNewNumber, persons, setPersons}) => {
+
     const handlePersonChange = (event) => {
         //console.log('printing from handlePersonChange ' + event.target.value)
         setNewName(event.target.value)
     }
+
     const handleNumberChange = (event) => {
         //console.log('printing from handleNumberChange ' + event.target.value)
         setNewNumber(event.target.value)
     }
+
     const addPerson = (event) => {
         event.preventDefault();
 
@@ -48,7 +51,5 @@ const PersonForm = ({ newName,  setNewName, newNumber, setNewNumber, persons, se
         </form>
     )
 }
-
-
 
 export default PersonForm

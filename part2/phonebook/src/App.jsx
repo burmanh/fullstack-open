@@ -12,7 +12,6 @@ const App = () => {
     <>
       <h1>Phonebook</h1>
       <p>here goes searchfield</p>
-
       <h2>Add to phonebook</h2>
       <PersonForm
         newName={newName}
@@ -22,7 +21,6 @@ const App = () => {
         persons={persons}
         setPersons={setPersons}
       />
-
       <h2>Numbers</h2>
       <Persons persons={persons} />
     </>
